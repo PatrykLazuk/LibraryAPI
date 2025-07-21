@@ -1,0 +1,81 @@
+########################################
+#  .NET build artefacts
+########################################
+bin/
+obj/
+TestResults/
+# coverlet / dotCover / Visual Studio coverage
+coverage*/
+*.coverage
+*.coveragexml
+*.lcov
+*.opencover.xml
+
+# publish / self‑contained
+**/publish/
+# dotnet user‑secrets (jeśli nie chcesz ich wersjonować)
+**/secrets.json
+
+########################################
+#  Rider, Visual Studio, VS Code
+########################################
+.idea/
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio for Mac
+**/*.userprefs
+
+########################################
+#  Resharper / Rider
+########################################
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+########################################
+#  OS‑specyfic
+########################################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+# Linux
+*~
+
+########################################
+#  Logs & temp
+########################################
+*.log
+*.swp
+*.tmp
+*.bak
+
+########################################
+#  NuGet local packages output
+########################################
+*.nupkg
+*.snupkg
+# paket
+.paket/
+paket-files/
+
+########################################
+#  Rider solution‑wide inspections
+########################################
+.idea/
+.sln.iml
+
+########################################
+#  JetBrains Rider / VSCode generated js/ts
+########################################
+node_modules/
+dist/
