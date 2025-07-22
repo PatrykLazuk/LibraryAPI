@@ -16,27 +16,27 @@ namespace Library.Api.Tests
         [Fact(DisplayName = "Given a Book entity - When mapped to DTO - Then all fields match")]
         public void Entity_ToDto_AllFieldsMatch()
         {
-            //Given
+            // Given
             var entity = new Book { Id = 42, Title = "T", Author = "A", Isbn = "123" };
             entity.ChangeStatus(BookStatus.Borrowed);
 
-            //When
+            // When
             var dto = entity.ToDto();
 
-            //Then 
+            // Then 
             dto.Should().BeEquivalentTo(entity, opt => opt.ExcludingNonBrowsableMembers());
         }
 
         [Fact(DisplayName = "Given a CreateBookDto - When converted to entity - Then status defaults to OnShelf")]
         public void CreateDto_ToEntity_StatusDefault()
         {
-            //Given
+            // Given
             var dto = new CreateBookDto { Title = "T", Author = "A", Isbn = "321" };
 
-            //When
+            // When
             var entity = dto.ToEntity();
 
-            //Then
+            // Then
             entity.Status.Should().Be(BookStatus.OnShelf);
         }
     }

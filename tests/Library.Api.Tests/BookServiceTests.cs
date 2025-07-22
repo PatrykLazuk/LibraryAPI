@@ -38,27 +38,27 @@ namespace Library.Api.Tests
         [Fact(DisplayName = "Given duplicate ISBN - When CreateAsync called - Then InvalidOpertionException thrown")]
         public async Task CreateAsync_DuplicateIsbn_Throws()
         {
-            //Given
+            // Given
             var service = CreateService(out _);
             await service.CreateAsync(TestData.ValidBook("BAR"));
 
-            //When
+            // When
             Func<Task> act = () => service.CreateAsync(TestData.ValidBook("BAR"));
 
-            //Then
+            // Then
             await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("*ISBN must be unique*");
         }
 
         [Fact(DisplayName = "Given Borrowed status - When attempt invalid transition - Then exception")]
         public async Task UpdateAsync_InvalidStatusTransition_Throws()
         {
-            //Given
+            // Given
             var service = CreateService(out _);
             var original = await service.CreateAsync(TestData.ValidBook("111"));
             original.ChangeStatus(BookStatus.Borrowed);
             await service.UpdateAsync(original.Id, original);
 
-            //When
+            // When
             var updated = new Book
             {
                 Id = original.Id,
@@ -70,7 +70,7 @@ namespace Library.Api.Tests
 
             Func<Task> act = () => service.UpdateAsync(original.Id, updated);
 
-            //Then
+            // Then
             await act.Should().ThrowAsync<InvalidOperationException>();
         }
 

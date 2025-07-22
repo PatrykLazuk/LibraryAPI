@@ -6,29 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.Api.Tests.Helpers;
 
-// public sealed class TestWebFactory : WebApplicationFactory<Program>
-// {
-//     private const string DbName = "LibraryApiTests";
-
-//     protected override void ConfigureWebHost(IWebHostBuilder builder)
-//     {
-//         builder.ConfigureServices(services =>
-//         {
-//             var descriptor = services.Single(d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
-//             services.Remove(descriptor);
-
-//             services.AddDbContext<AppDbContext>(o =>
-//                 o.UseInMemoryDatabase(DbName));
-//         });
-//     }
-// }
-
 public sealed class TestWebFactory : WebApplicationFactory<Program>
 {
     private readonly string _dbName;
 
     public TestWebFactory(string? dbName = null)
-        => _dbName = dbName ?? Guid.NewGuid().ToString();   // ← unikalna nazwa
+        => _dbName = dbName ?? Guid.NewGuid().ToString();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -38,7 +21,7 @@ public sealed class TestWebFactory : WebApplicationFactory<Program>
             services.Remove(desc);
 
             services.AddDbContext<AppDbContext>(o =>
-                o.UseInMemoryDatabase(_dbName));            // każda instancja = osobna baza
+                o.UseInMemoryDatabase(_dbName));
         });
     }
 }
